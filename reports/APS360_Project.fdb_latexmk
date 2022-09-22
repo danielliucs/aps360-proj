@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex APS360_Project"] 1663875245 "APS360_Project.aux" "APS360_Project.bbl" "APS360_Project" 1663875373
+["bibtex APS360_Project"] 1663875245 "APS360_Project.aux" "APS360_Project.bbl" "APS360_Project" 1663875555
   "./iclr2022_conference.bst" 1651875476 26973 aa1df73f8afb5963eb2fc74f4c7630c1 ""
-  "APS360_Project.aux" 1663875373 3428 e33ed3e8648a6486d7c43e14d90119b0 "pdflatex"
+  "APS360_Project.aux" 1663875554 3428 e33ed3e8648a6486d7c43e14d90119b0 "pdflatex"
   "APS360_ref.bib" 1651875476 629 874ad2cd193ec8e65abcd05eea606aaf ""
   (generated)
   "APS360_Project.bbl"
   "APS360_Project.blg"
-["pdflatex"] 1663875373 "/home/daniel/aps360-proj/reports/APS360_Project.tex" "APS360_Project.pdf" "APS360_Project" 1663875373
+["pdflatex"] 1663875554 "/home/daniel/aps360-proj/reports/APS360_Project.tex" "APS360_Project.pdf" "APS360_Project" 1663875555
   "/etc/texmf/web2c/texmf.cnf" 1652730241 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/daniel/aps360-proj/reports/APS360_Project.tex" 1663875372 14763 f714c0a94a032212584acab2a17bc76c ""
+  "/home/daniel/aps360-proj/reports/APS360_Project.tex" 1663875553 14768 68e225f1984f98f3298b70aa068bd70d ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -141,10 +141,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1652734594 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1652734612 2799079 a7296dc5999a96121dbba34b98e57e25 ""
-  "APS360_Project.aux" 1663875373 3428 e33ed3e8648a6486d7c43e14d90119b0 "pdflatex"
-  "APS360_Project.bbl" 1663875349 972 47bc0371fff8771b194310c73fbfdc7e "bibtex APS360_Project"
-  "APS360_Project.out" 1663875373 2241 8e027b5d866234b19d088261c94ec1ac "pdflatex"
-  "APS360_Project.tex" 1663875372 14763 f714c0a94a032212584acab2a17bc76c ""
+  "APS360_Project.aux" 1663875554 3428 e33ed3e8648a6486d7c43e14d90119b0 "pdflatex"
+  "APS360_Project.bbl" 1663875404 972 47bc0371fff8771b194310c73fbfdc7e "bibtex APS360_Project"
+  "APS360_Project.out" 1663875554 2241 8e027b5d866234b19d088261c94ec1ac "pdflatex"
+  "APS360_Project.tex" 1663875553 14768 68e225f1984f98f3298b70aa068bd70d ""
   "Figs/td-deep-learning.jpg" 1651875476 140362 88c75ad5adc0d6ef17d9de7e87378c46 ""
   "fancyhdr.sty" 1651875476 20521 e5d13d98d57bd53d4fed3aa61bd29c86 ""
   "iclr2022_conference.sty" 1651875476 9167 4f484121d9ee5c46ae7b712b095a6d14 ""
