@@ -1,0 +1,6 @@
+*site-packages
+*bin
+*pyvenv
+*ttx.1
+aps360/pyvenv.cfg
+*.DS_Store
