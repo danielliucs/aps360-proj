@@ -23,10 +23,10 @@ class hybrid_CNN_RNN(nn.Module):
         # CNN-RNN Loop
         i = 0
         f_map = self.CNN((x[:, i]))
-        out, h_n = self.rnn(f_map.unsqueeze(1))
+        out, h_n = self.RNN(f_map.unsqueeze(1))
         for i in range(1, x.size(1)):
             f_map = self.CNN((x[:, i]))
-            out, h_n = self.rnn(f_map.unsqueeze(1), h_n)
+            out, h_n = self.RNN(f_map.unsqueeze(1), h_n)
 
         # FC
         out = self.FC(out[:, -1, :])
