@@ -39,7 +39,7 @@ def get_data(batch_size, folder):
     #https://stackoverflow.com/questions/74291946/wrong-labels-when-using-dataloader-pytorch
     train_loader = torch.utils.data.DataLoader(train_split, batch_size=batch_size, num_workers=1)
     val_loader = torch.utils.data.DataLoader(val_split, batch_size=batch_size, num_workers=1)
-    #visualize(train_loader)
+    visualize(train_loader)
     #visualize(val_loader)
     return train_loader, val_loader
 def visualize(loader):
@@ -49,6 +49,7 @@ def visualize(loader):
     for images, labels in loader:
         image = images[0]
         img = np.transpose(image, [1,2,0])
+        #print(labels[0])
         # normalize pixel intensity values to [0, 1]
         img = img / 2 + 0.5
         plt.subplot(3, 5, k+1, title=classes[labels])
@@ -63,6 +64,9 @@ def visualize(loader):
 def main():
     #To test it's working: get_data(1, "~/aps360-proj/testing")
     # f, g = get_data(1000, "~/aps360-proj/dataset"), crashes on my local test on PC
+    # for i in f:
+    #     print(i)
+    f, g = get_data(1, "~/aps360-proj/testing")
     # for i in f:
     #     print(i)
     print("Why are you not importing this file idiot")
