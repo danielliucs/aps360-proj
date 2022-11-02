@@ -12,7 +12,7 @@ import torchvision
 from torch.utils.data.sampler import SubsetRandomSampler
 import torchvision.transforms as transforms
 
-def get_relevant_indicies(dataset, classes):
+def get_relevant_indicies(dataset):
     """Returns the indicies of the classes in the dataset"""
     indicies = []
     for i in range(len(dataset)):
