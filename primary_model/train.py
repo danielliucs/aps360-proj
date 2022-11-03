@@ -1,3 +1,11 @@
+# adding dataset to default paths
+import os
+import sys
+script_dir = os.path.dirname( __file__ )
+dataset_dir = os.path.join(script_dir, '..', 'dataset')
+sys.path.append(dataset_dir)
+
+# importing
 import numpy as np
 import torch
 import torch.nn as nn
@@ -5,7 +13,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 import matplotlib.pyplot as plt
 
-def train(net, train_loader, val_loader, batch_size=64, learning_rate=0.01, num_epochs=30, validate=True):
+def train(net, train_loader, val_loader, learning_rate=0.01, num_epochs=30):
 
     # reproducible results
     torch.manual_seed(1000)

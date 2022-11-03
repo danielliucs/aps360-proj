@@ -27,7 +27,7 @@ def get_data(batch_size, folder):
     """
     
     transform = transforms.Compose(
-        [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+        [transforms.Resize((224,224)), transforms.transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
     )
     #Load images
     trainset = torchvision.datasets.ImageFolder(folder, transform=transform)    
@@ -66,9 +66,12 @@ def main():
     # f, g = get_data(1000, "~/aps360-proj/dataset"), crashes on my local test on PC
     # for i in f:
     #     print(i)
-    f, g = get_data(1, "~/aps360-proj/testing")
+    # f, g = get_data(1, "~/aps360-proj/testing")
     # for i in f:
     #     print(i)
-    print("Why are you not importing this file idiot")
+    # print("Why are you not importing this file idiot")
+
+    train_loader, data_loader 
+
 if __name__ == '__main__':
     main()
