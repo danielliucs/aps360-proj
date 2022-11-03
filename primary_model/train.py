@@ -5,8 +5,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 import matplotlib.pyplot as plt
+from dataset.dataloader import get_data
 
-def train(net, train_loader, val_loader, learning_rate=0.01, num_epochs=30):
+def train(net, train_loader, val_loader, batch_size=32, learning_rate=0.01, num_epochs=30):
 
     # reproducible results
     torch.manual_seed(1000)
@@ -128,3 +129,6 @@ def plot_training_curve(path):
     plt.ylabel("Loss")
     plt.legend(loc='best')
     plt.show()
+
+
+
