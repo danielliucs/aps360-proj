@@ -27,7 +27,7 @@ def get_data(batch_size, folder):
     """
     
     transform = transforms.Compose(
-        [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+        [transforms.Resize((224,224)), transforms.transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
     )
     #Load images
     trainset = torchvision.datasets.ImageFolder(folder, transform=transform)    
@@ -44,7 +44,7 @@ def get_data(batch_size, folder):
     return train_loader, val_loader
 def visualize(loader):
     """Visualize the data we parse, mostly for a sanity check"""
-    classes = ("Normal", "Talking", "Yawning")
+    classes = ("Normal", "Yawning")
     k = 0
     for images, labels in loader:
         image = images[0]
@@ -60,15 +60,39 @@ def visualize(loader):
             break
 
     plt.show() #Actually shows the image
+def compute_and_save_features(loader, train):
+    """Save tensors of loaders into folders depending on which dataset it is"""
+    classes=('Normal', 'Yawning')
+    dir = ""
+    if train == "train":
+        dir = "train_frames"
+    elif train == "val":
+        dir = "val_frames"
+    else:
+        dir = "test_frames"
+    img_count = 0
+    for img, label in loader:
+
+        if not os.path.exists(f'{dir}/{classes[label]}'):
+            os.makedirs(f'{dir}/{classes[label]}')
+            
+        torch.save(img, f'{dir}/{classes[label]}/{img_count}.tensorsaved')
+        img_count += 1
+
 
 def main():
     #To test it's working: get_data(1, "~/aps360-proj/testing")
     # f, g = get_data(1000, "~/aps360-proj/dataset"), crashes on my local test on PC
     # for i in f:
     #     print(i)
-    f, g = get_data(1, "~/aps360-proj/testing")
+    # f, g = get_data(1, "~/aps360-proj/testing")
     # for i in f:
     #     print(i)
     print("Why are you not importing this file idiot")
+
+    train_loader, data_loader = get_data(1, "C:/Users/User/Desktop/aps360-proj/dataset")
+    compute_and_save_features(train_loader, "train")
+    compute_and_save_features(data_loader, "val")
+
 if __name__ == '__main__':
     main()

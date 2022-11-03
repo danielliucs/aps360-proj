@@ -4,7 +4,7 @@ import torchvision.models
 
 # hybrid CNN RNN model for video classification
 class hybrid_CNN_RNN(nn.Module):
-    def __init__(self, hidden_size, num_class):
+    def __init__(self, hidden_size):
         super(hybrid_CNN_RNN, self).__init__()
 
         # using pretrained AlexNet CNN for image feature extraction
@@ -15,8 +15,8 @@ class hybrid_CNN_RNN(nn.Module):
         self.hidden_size = hidden_size
         self.RNN = nn.RNN(9216, hidden_size, batch_first=True)
 
-        # using fully-connected layer for final classification
-        self.FC = nn.Linear(hidden_size, num_class)
+        # using fully-connected layer for final binary classification
+        self.FC = nn.Linear(hidden_size, 2)
 
     def forward(self, x):
 
