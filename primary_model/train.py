@@ -1,11 +1,4 @@
-# adding dataset to default paths
-import os
-import sys
-script_dir = os.path.dirname( __file__ )
-dataset_dir = os.path.join(script_dir, '..', 'dataset')
-sys.path.append(dataset_dir)
-
-# importing
+# imports
 import numpy as np
 import torch
 import torch.nn as nn
@@ -77,9 +70,8 @@ def train(net, train_loader, val_loader, learning_rate=0.01, num_epochs=30):
     epochs = np.arange(1, num_epochs + 1)
     np.savetxt("{}_train_acc.csv".format(model_path), train_acc)
     np.savetxt("{}_train_loss.csv".format(model_path), train_loss)
-    if validate:
-        np.savetxt("{}_val_acc.csv".format(model_path), val_acc)
-        np.savetxt("{}_val_loss.csv".format(model_path), val_loss)
+    np.savetxt("{}_val_acc.csv".format(model_path), val_acc)
+    np.savetxt("{}_val_loss.csv".format(model_path), val_loss)
 
 def evaluate(net, loader, criterion):
 
