@@ -129,6 +129,3 @@ def plot_training_curve(path):
     plt.ylabel("Loss")
     plt.legend(loc='best')
     plt.show()
-
-
-
