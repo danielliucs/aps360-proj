@@ -2,15 +2,17 @@
 import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 import matplotlib.pyplot as plt
-from dataset.dataloader import get_data
+from torch.utils.data import DataLoader
 
-def train(net, train_loader, val_loader, batch_size=32, learning_rate=0.01, num_epochs=30):
+def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs=30):
 
     # reproducible results
     torch.manual_seed(1000)
+
+    train_loader = DataLoader(train_set, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_set, batch_size=batch_size, shuffle=True)
 
     # loss function and optimizer
     criterion = nn.BCEWithLogitsLoss()
@@ -33,6 +35,7 @@ def train(net, train_loader, val_loader, batch_size=32, learning_rate=0.01, num_
 
             # getting data
             inputs, labels = data
+            inputs = inputs.squeeze(0)
             
             # calculating outputs and loss
             outputs = net(inputs)
