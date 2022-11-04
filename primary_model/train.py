@@ -36,6 +36,8 @@ def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs
             # getting data
             inputs, labels = data
             inputs = inputs.squeeze(0)
+
+            print(inputs.shape)
             
             # calculating outputs and loss
             outputs = net(inputs)
