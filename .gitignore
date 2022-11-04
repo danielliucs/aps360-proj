@@ -4,3 +4,4 @@
 *ttx.1
 aps360/pyvenv.cfg
 *.DS_Store
+*__pycache__*

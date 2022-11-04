@@ -1,11 +1,6 @@
 from genericpath import isdir
 import cv2
-import numpy as np
-import csv
 import os
-import random
-import torch
-import torch.utils.data
 
 img_hm = {}
 videonum = 0
@@ -48,10 +43,10 @@ def getFrames(time, vid):
     if not os.path.isdir(oppath):
         os.makedirs(oppath)
 
-    if success:
-        cv2.imwrite(
-            oppath + "/" + all_file_names[videonum] + str(n) + ".jpg", frame_img
-        )
+    #if success:
+        #cv2.imwrite(
+          #  oppath + "/" + all_file_names[videonum] + str(n) + ".jpg", frame_img
+        #)
 
     return (frame_img, success)
 

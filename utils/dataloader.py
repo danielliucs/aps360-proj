@@ -1,18 +1,10 @@
 #Import libraries
-import cv2
 import os
-import pandas as pd
 import numpy as np
-import random
 import matplotlib.pyplot as plt
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
-import torchvision
-from torch.utils.data.sampler import SubsetRandomSampler
 import torchvision.transforms as transforms
 from torchvision.io import read_image
-import dataloader
 from PIL import Image
 
 # class CustomDataset(Dataset):
