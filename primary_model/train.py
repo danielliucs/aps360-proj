@@ -47,7 +47,7 @@ def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs
             optimizer.zero_grad()
 
             # keeping track of training accuracy and loss
-            corr = (outputs > 0.5).squeeze().long() == labels
+            corr = (outputs > 0).squeeze().long() == labels
             total_train_acc += int(corr.sum())
             total_train_loss += loss.item()
             total_epoch += len(labels)
@@ -94,9 +94,8 @@ def evaluate(net, loader, criterion):
             # calculating outputs and loss
             outputs = net(inputs)
             loss = criterion(outputs, labels.float()) 
-    
             # keeping track of accuracy and loss
-            corr = (outputs > 0.5).squeeze().long() == labels
+            corr = (outputs > 0).squeeze().long() == labels
             total_acc += int(corr.sum())
             total_loss += loss.item()
             total_epoch += len(labels)
