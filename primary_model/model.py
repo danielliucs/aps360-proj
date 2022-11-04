@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 import torchvision
 import torchvision.models
@@ -22,13 +23,14 @@ class hybrid_CNN_RNN(nn.Module):
 
         # CNN-RNN Loop
         i = 0
-        f_map = self.CNN((x[:, i]))
-        out, h_n = self.RNN(f_map.unsqueeze(1))
+        f_map = self.CNN(x[i])
+        # print(torch.flatten(f_map).unsqueeze(0).shape)
+        out, h_n = self.RNN(torch.flatten(f_map).unsqueeze(0))
         for i in range(1, x.size(1)):
-            f_map = self.CNN((x[:, i]))
-            out, h_n = self.RNN(f_map.unsqueeze(1), h_n)
+            f_map = self.CNN(x[i])
+            out, h_n = self.RNN(torch.flatten(f_map).unsqueeze(0), h_n)
 
         # FC
-        out = self.FC(out[:, -1, :])
+        out = self.FC(out[0])
 
         return out

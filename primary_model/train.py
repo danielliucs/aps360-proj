@@ -35,13 +35,11 @@ def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs
 
             # getting data
             inputs, labels = data
-            inputs = inputs.squeeze(0)
-
-            print(inputs.shape)
+            inputs = torch.squeeze(inputs)
             
             # calculating outputs and loss
             outputs = net(inputs)
-            loss = criterion(outputs, labels)
+            loss = criterion(outputs, labels.float())
 
             # gradient descent
             loss.backward()
@@ -94,7 +92,7 @@ def evaluate(net, loader, criterion):
     
             # calculating outputs and loss
             outputs = net(inputs)
-            loss = criterion(outputs, labels) 
+            loss = criterion(outputs, labels.float()) 
     
             # keeping track of accuracy and loss
             corr = (outputs > 0.5).squeeze().long() == labels
