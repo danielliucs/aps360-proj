@@ -89,6 +89,7 @@ def evaluate(net, loader, criterion):
         
             # getting data
             inputs, labels = data
+            inputs = torch.squeeze(inputs)
     
             # calculating outputs and loss
             outputs = net(inputs)

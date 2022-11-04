@@ -8,6 +8,8 @@ class hybrid_CNN_RNN(nn.Module):
     def __init__(self, hidden_size):
         super(hybrid_CNN_RNN, self).__init__()
 
+        self.name = "hybridCNNRNN"
+
         # using pretrained AlexNet CNN for image feature extraction
         alexnet = torchvision.models.alexnet(pretrained=True)
         self.CNN = alexnet.features
