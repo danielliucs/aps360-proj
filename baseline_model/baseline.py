@@ -94,9 +94,10 @@ else:
 #accuracy test for female no yawning
 count = 0
 total = 0
-for i in range(103, 115):
-    inpath  = '../dataset/Yawning/1-FemaleNoGlasses-Yawning.avi{0}.jpg'.format(i)
-    outpath = '../dataset/Yawning/1-FemaleNoGlasses-Yawning.avi{0}_FACECROPPED.jpg'.format(i)
+for i in range(2197, 2243):
+
+    inpath = '../dataset/Normal/2-MaleGlasses-Normal.avi{0}.jpg'.format(i)
+    outpath = '../dataset/Normal/2-MaleGlasses-Normal.avi{0}_FACECROPPED.jpg'.format(i)
     
     err = crop_face(inpath, outpath)
     if err == 1:
@@ -115,4 +116,4 @@ for i in range(103, 115):
 
     total += 1
 
-print("baseline accuracy: ", 100*count/total, "%", sep='')
+print("percent frames yawning: ", 100*count/total, "%", sep='')
