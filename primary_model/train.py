@@ -6,7 +6,7 @@ import torch.optim as optim
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 
-def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs=30):
+def train(net, train_set, val_set, use_cuda, batch_size=32, learning_rate=0.01, num_epochs=30):
 
     # reproducible results
     torch.manual_seed(1000)
@@ -36,6 +36,10 @@ def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs
             # getting data
             inputs, labels = data
             inputs = torch.squeeze(inputs)
+
+            if use_cuda:
+                inputs = inputs.cuda()
+                labels = labels.cuda()
             
             # calculating outputs and loss
             outputs = net(inputs)
@@ -55,7 +59,7 @@ def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs
         # accuracies and losses
         train_acc[epoch] = float(total_train_acc) / total_epoch
         train_loss[epoch] = float(total_train_loss) / (i+1)
-        val_acc[epoch], val_loss[epoch] = evaluate(net, val_loader, criterion)
+        val_acc[epoch], val_loss[epoch] = evaluate(net, val_loader, criterion, use_cuda)
 
         # printing accuracies and losses
         print(("Epoch {}: ").format(epoch + 1))
@@ -77,7 +81,7 @@ def train(net, train_set, val_set, batch_size=32, learning_rate=0.01, num_epochs
     np.savetxt("{}_val_acc.csv".format(model_path), val_acc)
     np.savetxt("{}_val_loss.csv".format(model_path), val_loss)
 
-def evaluate(net, loader, criterion):
+def evaluate(net, loader, criterion, use_cuda):
 
     with torch.no_grad():
 
@@ -90,6 +94,10 @@ def evaluate(net, loader, criterion):
             # getting data
             inputs, labels = data
             inputs = torch.squeeze(inputs)
+
+            if use_cuda:
+                inputs = inputs.cuda()
+                labels = labels.cuda()
     
             # calculating outputs and loss
             outputs = net(inputs)
