@@ -60,6 +60,7 @@ def get_data(batch_size, folder, video_to_frames):#, video_to_frames):
     normal = convert_imgs_to_tensor(f'{folder}/Normal', transform, video_to_frames, False)
     yawning = convert_imgs_to_tensor(f'{folder}/Yawning', transform, video_to_frames, True)
 
+    yawning = yawning * 3
     #Concat both datasets
     trainset = torch.utils.data.ConcatDataset([normal, yawning])
 

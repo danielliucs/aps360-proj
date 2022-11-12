@@ -15,11 +15,15 @@ def main():
     train_set = torchvision.datasets.DatasetFolder("C:/Users/User/Desktop/aps360-proj/dataset/train_frames", loader=torch.load, extensions=('.tensorsaved'))
     val_set = torchvision.datasets.DatasetFolder("C:/Users/User/Desktop/aps360-proj/dataset/val_frames", loader=torch.load, extensions=('.tensorsaved'))
 
-    # declaration of network
-    network = hybrid_CNN_RNN(12)
+   # declaration of network
+    use_cuda = torch.cuda.is_available()
+    if use_cuda:
+        network = hybrid_CNN_RNN(12).cuda()
+    else:
+        network = hybrid_CNN_RNN(12)
 
     #Training model
-    train(network, train_set, val_set, batch_size=1, learning_rate=0.0001, num_epochs=30)
+    train(network, train_set, val_set, use_cuda, batch_size=1, learning_rate=0.0001, num_epochs=30)
 
 
 if __name__ == '__main__':
