@@ -79,6 +79,27 @@ def get_data(batch_size, folder, video_to_frames):#, video_to_frames):
     val_loader = torch.utils.data.DataLoader(val_split, batch_size=batch_size, num_workers=1)
     print("Our dataloader", train_loader)
     return train_loader, val_loader
+
+def get_testing_data(batch_size, folder, video_to_frames):
+    transform = transforms.Compose(
+        [transforms.Resize((224,224)), transforms.transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+    )
+    #Load images and convert all to tensors
+    normal_testing = convert_imgs_to_tensor(f'{folder}/Normal', transform, video_to_frames, False)
+    yawning_testing = convert_imgs_to_tensor(f'{folder}/Yawning', transform, video_to_frames, True)
+
+    yawning_testing = yawning_testing * 3
+    #Concat both datasets
+    testset = torch.utils.data.ConcatDataset([normal_testing, yawning_testing])
+
+    #To test if it's alright
+    for i in testset:
+        print(i)
+
+    test_loader = torch.utils.data.DataLoader(testset, batch_size=batch_size, num_workers=1, shuffle=True)
+    print("Our dataloader", test_loader)
+    return test_loader
+    
 def visualize(loader):
     """Visualize the data we parse, mostly for a sanity check"""
     classes = ("Normal", "Yawning")
