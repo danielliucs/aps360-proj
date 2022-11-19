@@ -9,8 +9,8 @@ all_file_paths = (
 )  # paths to every video. don't change this, only the two paths underneath
 
 # CHANGE THESE PATHS UP UNTIL "YawDD_dataset" TO BE YOUR LOCAL PATH.
-directory = "/Users/srinidhishankar/Documents/APS360/aps360-proj/YawDD_dataset"
-oppath = "/Users/srinidhishankar/Documents/APS360/aps360-proj/YawDD_dataset/allPhotos"
+directory = "/Users/leonz/Desktop/Yawning"
+oppath = "/Users/leonz/Desktop/Yawning_Frames"
 
 
 all_file_names = []
@@ -43,10 +43,10 @@ def getFrames(time, vid):
     if not os.path.isdir(oppath):
         os.makedirs(oppath)
 
-    #if success:
-        #cv2.imwrite(
-          #  oppath + "/" + all_file_names[videonum] + str(n) + ".jpg", frame_img
-        #)
+    if success:
+        cv2.imwrite(
+           oppath + "/" + all_file_names[videonum] + str(n) + ".jpg", frame_img
+        )
 
     return (frame_img, success)
 
