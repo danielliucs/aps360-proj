@@ -9,8 +9,8 @@ all_file_paths = (
 )  # paths to every video. don't change this, only the two paths underneath
 
 # CHANGE THESE PATHS UP UNTIL "YawDD_dataset" TO BE YOUR LOCAL PATH.
-directory = "/Users/leonz/Desktop/Yawning"
-oppath = "/Users/leonz/Desktop/Yawning_Frames"
+directory = "C:/Users/User/Desktop/aps360-proj/aps360_yawning"
+oppath = "C:/Users/User/Desktop/aps360-proj/dataset/allPhotos"
 
 
 all_file_names = []
@@ -59,7 +59,7 @@ while videonum < len(all_file_paths):
     vid = cv2.VideoCapture(path)
 
     # change these numbes (fps lower for less pics) if needed/ if model taking too long to train
-    framerate = 3
+    framerate = 5
     frameduration = round(1 / framerate, 6)
 
     sec = 0

@@ -85,8 +85,8 @@ def get_testing_data(batch_size, folder, video_to_frames):
         [transforms.Resize((224,224)), transforms.transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
     )
     #Load images and convert all to tensors
-    normal_testing = convert_imgs_to_tensor(f'{folder}/Normal', transform, video_to_frames, False)
-    yawning_testing = convert_imgs_to_tensor(f'{folder}/Yawning', transform, video_to_frames, True)
+    normal_testing = convert_imgs_to_tensor(f'{folder}/testing_normal', transform, video_to_frames, False)
+    yawning_testing = convert_imgs_to_tensor(f'{folder}/testing_yawning', transform, video_to_frames, True)
 
     yawning_testing = yawning_testing * 3
     #Concat both datasets
