@@ -18,9 +18,9 @@ def main():
    # declaration of network
     use_cuda = torch.cuda.is_available()
     if use_cuda:
-        network = hybrid_CNN_RNN(12).cuda()
+        network = hybrid_CNN_RNN(120).cuda()
     else:
-        network = hybrid_CNN_RNN(12)
+        network = hybrid_CNN_RNN(120)
 
     #Training model
     train(network, train_set, val_set, use_cuda, batch_size=1, learning_rate=0.0001, num_epochs=30)

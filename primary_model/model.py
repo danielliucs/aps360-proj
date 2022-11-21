@@ -16,7 +16,7 @@ class hybrid_CNN_RNN(nn.Module):
 
         # using RNN to process CNN output frame by frame
         self.hidden_size = hidden_size
-        self.RNN = nn.RNN(9216, hidden_size, batch_first=True)
+        self.RNN = nn.GRU(9216, hidden_size, batch_first=True)
 
         # using fully-connected layer for final binary classification
         self.FC = nn.Linear(hidden_size, 1)
