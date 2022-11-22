@@ -251,7 +251,7 @@ def main():
     #Change the paths to your own paths
     #TODO maybe make it through user input
     #TODO wrap things into a class for more organization maybe
-    scanFiles("C:/Users/User/Desktop/aps360-proj/testing_dataset")
+    scanFiles("C:/Users/leonz/github/aps360-proj/testing_dataset")
     yawn_files = []
     normal_files = []
     get_yawn_or_normal_files(yawn_files, True)
@@ -266,8 +266,8 @@ def main():
     # save_features(train_loader, "train", "C:/Users/User/Desktop/aps360-proj/dataset")
     # save_features(data_loader, "val", "C:/Users/User/Desktop/aps360-proj/dataset")
     
-    test_loader = get_testing_data(1, "C:/Users/User/Desktop/aps360-proj/testing_dataset", yawn_set, normal_set)
-    save_features(test_loader, "test", "C:/Users/User/Desktop/aps360-proj/testing_dataset")
+    test_loader = get_testing_data(1, "C:/Users/leonz/github/aps360-proj/testing_dataset", yawn_set, normal_set)
+    save_features(test_loader, "test", "C:/Users/leonz/github/aps360-proj/testing_dataset")
     
 
 if __name__ == '__main__':

@@ -5,6 +5,7 @@ import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
+from torchmetrics.functional import precision_recall
 
 def train(net, train_set, val_set, use_cuda, batch_size=32, learning_rate=0.01, num_epochs=30):
 
@@ -59,7 +60,7 @@ def train(net, train_set, val_set, use_cuda, batch_size=32, learning_rate=0.01, 
         # accuracies and losses
         train_acc[epoch] = float(total_train_acc) / total_epoch
         train_loss[epoch] = float(total_train_loss) / (i+1)
-        val_acc[epoch], val_loss[epoch] = evaluate(net, val_loader, criterion, use_cuda)
+        val_acc[epoch], val_loss[epoch], a, b, c = evaluate(net, val_loader, criterion, use_cuda)
 
         # printing accuracies and losses
         print(("Epoch {}: ").format(epoch + 1))
@@ -83,6 +84,9 @@ def train(net, train_set, val_set, use_cuda, batch_size=32, learning_rate=0.01, 
 
 def evaluate(net, loader, criterion, use_cuda):
 
+    pred_list = torch.Tensor()
+    label_list = torch.Tensor()
+
     with torch.no_grad():
 
         total_loss = 0.0
@@ -94,6 +98,7 @@ def evaluate(net, loader, criterion, use_cuda):
             # getting data
             inputs, labels = data
             inputs = torch.squeeze(inputs)
+            label_list = torch.cat((label_list, labels))
 
             if use_cuda:
                 inputs = inputs.cuda()
@@ -103,6 +108,7 @@ def evaluate(net, loader, criterion, use_cuda):
             outputs = net(inputs)
             loss = criterion(outputs, labels.float()) 
             # keeping track of accuracy and loss
+            pred_list = torch.cat((pred_list, outputs))
             corr = (outputs > 0).squeeze().long() == labels
             total_acc += int(corr.sum())
             total_loss += loss.item()
@@ -111,12 +117,15 @@ def evaluate(net, loader, criterion, use_cuda):
         # accuracies and losses
         acc = float(total_acc) / total_epoch
         loss = float(total_loss) / (i + 1)
-    
-        return acc, loss
+
+        prec, rec = precision_recall(pred_list, label_list.int(), num_classes = 1)
+        f1 = 2*(prec*rec)/(prec+rec)
+
+        return acc, loss, float(prec), float(rec), float(f1)
 
 def get_model_name(name, batch_size, learning_rate, epoch):
 
-    path = "out/model_{0}_bs{1}_lr{2}_epoch{3}".format(name, batch_size, learning_rate, epoch)
+    path = "C:/Users/leonz/github/aps360-proj/results/GRU_and_1e-5LR/model_{0}_bs{1}_lr{2}_epoch{3}".format(name, batch_size, learning_rate, epoch)
     return path
 
 def plot_training_curve(path):
